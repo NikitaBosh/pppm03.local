@@ -41,12 +41,12 @@
                             </a>
                         </li>
                         @endcan
+                        @endif
                         <li class="nav-item">
                             <a class="btn btn-secondary" href="{{ route('upload') }}">
                               Медиафайлы
                             </a>
                         </li>
-                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->

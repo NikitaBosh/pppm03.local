@@ -20,14 +20,18 @@
                         <strong>Последняя модификация:</strong> {{ $item->lastModified }}
                     </li>
                 </ul>
-                @can("admin")
+                @auth
                 <div class="card-body">
-                    
+                @can("admin")
                   <a class="btn btn-sm btn-outline-danger" href="{{ route('delete', ['filename' => $item->name]) }}">
                     Удалить
+                </a>
+                @endcan
+                <a class="btn btn-sm btn-outline-success" href="{{ route('download', ['filename' => $item->name]) }}">
+                Скачать
                 </a> 
-                    
-                </div>@endcan
+                </div>
+                @endauth 
             </div>
         </div>
     </div>

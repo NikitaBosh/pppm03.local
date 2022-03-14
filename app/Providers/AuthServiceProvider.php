@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-                // Определение является ли пользователь администратором
+        // Определение является ли пользователь администратором
         Gate::define('admin', function ($user) {
             if ($user->role == 'admin') {
                 return true;

@@ -91,5 +91,4 @@ class UserPolicy
         // возвращаем результат проверки
         return $isAdmin;
     }
-
 }

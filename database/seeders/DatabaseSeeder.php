@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Task;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,7 +16,6 @@ class DatabaseSeeder extends Seeder
     {
             $this->call([
             UsersTableSeeder::class,
-            TasksTableSeeder::class,
         ]);
     }
 }

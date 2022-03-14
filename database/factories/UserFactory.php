@@ -31,7 +31,8 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
         ];
     }
-        /**
+
+    /**
      * Состояние для учетной записи администратора
      *
      * @return \Illuminate\Database\Eloquent\Factories\Factory
@@ -46,6 +47,7 @@ class UserFactory extends Factory
             ];
         });
     }
+
     public function user()
     {
         return $this->state(function (array $attributes) {

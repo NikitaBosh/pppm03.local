@@ -1,11 +1,13 @@
-    @can("admin")
-    <div class="input-group">
-    <div class="custom-file">
-        <input type="file" class="custom-file-input" name="file[]" id="inputFile" multiple>
-        <label class="custom-file-label" for="inputFile">Выберите файлы</label>
-    </div>
-    <div class="input-group-append"> 
-        <button class="btn btn-primary" type="submit">Загрузить</button>
-    </div>
-</div>
-@endcan
+<input type="button" class="btn btn-primary" value="Загрузить файлы" onclick="handleFilesUploadForm(event)">
+<input type="file" class="invisible" name="files[]" id="filesInput" multiple>
+<script>
+    function handleFilesUploadForm(event)
+    {
+        event.preventDefault();
+        let filesInput = document.querySelector('#filesInput');
+        filesInput.click();
+        filesInput.addEventListener('change', function() {
+            document.querySelector('form#filesForm').submit();
+        });
+    }
+</script>

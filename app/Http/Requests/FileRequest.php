@@ -26,15 +26,16 @@ class FileRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' => 'required|max:153600',
+            'files' => 'required|max:153600',
         ];
     }
+    
     public function messages()
     {
         return [
-            'file.required' => 'Поле файл является обязательным для заполнения.',
-            'file.file' => 'Вы не загрузили файл.',
-            'file.size' => 'Размер файла слишком велик.',
+            'files.required' => 'Поле файл является обязательным для заполнения.',
+            'files.file' => 'Вы не загрузили файл.',
+            'files.size' => 'Размер файла слишком велик.',
         ];
     }
 

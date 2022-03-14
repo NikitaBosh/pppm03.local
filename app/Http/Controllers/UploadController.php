@@ -29,13 +29,14 @@ class UploadController extends Controller
      */
     public function upload(FileRequest $request)
     {
-        $request->validate([
-            'file' => 'required',
-        ]);
+        if(!$request->user()->checkRole('admin'))
+        {
+            abort(403);
+        }
 
         $disk = Storage::disk('files');
 
-        $files = $request->file('file');
+        $files = $request->file('files');
         foreach ($files as $file) {
             $disk->putFileAs('', $file, time().'_'.$file->getClientOriginalName());
         }
@@ -53,6 +54,11 @@ class UploadController extends Controller
      */
     public function delete(Request $request)
     {
+        if(!$request->user()->checkRole('admin'))
+        {
+            abort(403);
+        }
+
         $disk = Storage::disk('files');
         $disk->delete($request->filename);
 

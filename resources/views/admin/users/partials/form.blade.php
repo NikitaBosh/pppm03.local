@@ -17,4 +17,4 @@
     </select>
 </div>
 
-<button type="submit" id="save" class="btn btn-primary">Добавить</button>
+<button type="submit" id="save" class="btn btn-primary">Сохранить</button>

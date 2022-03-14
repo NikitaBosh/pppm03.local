@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
-use App\Http\Requests\TaskRequest;
+use App\Http\Requests\User\UserStore;
+use App\Http\Requests\User\UserUpdate;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 
@@ -49,9 +50,8 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(TaskRequest $request)
+    public function store(UserStore $request)
     {
-
         // User::create($request->all());
         // не подходит, так как надо создать хеш пароля
         $user = User::create([
@@ -116,14 +116,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(TaskRequest $request, $id)
+    public function update(UserUpdate $request, $id)
     {
         $item = User::findOrFail($id);
 
         $item->name = $request['name'];
         $item->email = $request['email'];
         $item->role = $request['role'];
-        if ($request['password'] == null) {
+        if ($request['password'] != null) {
             $item->password = bcrypt($request['password']);
         }
         $item->save();
