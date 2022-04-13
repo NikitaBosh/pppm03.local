@@ -81,9 +81,7 @@
                 </div>
             </div>
         </nav>
-
         <main class="py-4">
-            @include('components.message')
             @yield('content')
         </main>
     </div>

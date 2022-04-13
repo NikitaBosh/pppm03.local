@@ -9,7 +9,7 @@
         @forelse ($files as $file)
           <tr>
             <td class="pl-3">{{ $loop->iteration }}</td>
-            <td>{{ $file }}</td>
+            <td>{{ $file->path }}</td>
             <td class="text-right">
               <a class="btn btn-sm btn-outline-success" href="{{ route('download', ['filename' => $file]) }}">
                 Скачать

@@ -14,6 +14,15 @@
                         <strong>Название и формат:</strong> {{ $item->name }}
                     </li>
                     <li class="list-group-item">
+                        <strong>Тип:</strong> {{ $item->name }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Автор:</strong> {{ $item->name }}
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Категория:</strong> {{ $item->name }}
+                    </li>
+                    <li class="list-group-item">
                         <strong>Размер (МБ):</strong> {{ $item->sizeMB }}
                     </li>
                     <li class="list-group-item">

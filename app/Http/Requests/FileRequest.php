@@ -26,17 +26,24 @@ class FileRequest extends FormRequest
     public function rules()
     {
         return [
-            'files' => 'required|max:153600',
-        ];
-    }
-    
-    public function messages()
-    {
-        return [
-            'files.required' => 'Поле файл является обязательным для заполнения.',
-            'files.file' => 'Вы не загрузили файл.',
-            'files.size' => 'Размер файла слишком велик.',
+            'file' => 'required|max:153600',
+            'type' => 'required|between:1,255',
+            'author' => 'required|between:1,255',
+            'category' => 'required|between:1,255',
         ];
     }
 
+    public function messages()
+    {
+        return [
+            'file.required' => 'Поле файл является обязательным для заполнения.',
+            'file.max' => 'Размер файла слишком велик.',
+            'type.required' => 'Необходимо ввести тип файла.',
+            'type.between' => 'Количество символов должно быть в диапозоне от :min до :max.',
+            'author.required' => 'Необходио ввести название автора',
+            'author.between' => 'Количество символов должно быть в диапозоне от :min до :max.',
+            'category.required' => 'Необходимо ввести категорию',
+            'category.between' => 'Количество символов должно быть в диапозоне от :min до :max.',
+        ];
+    }
 }
