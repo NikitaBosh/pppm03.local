@@ -15,9 +15,10 @@ class CreateFileModelsTable extends Migration
     {
         Schema::create('file_models', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('category_id')->index();            
+            $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
             $table->string('type');
             $table->string('author');
-            $table->string('category');
             $table->boolean('isPublic')->default(1);
             $table->string('path');
             $table->timestamps();

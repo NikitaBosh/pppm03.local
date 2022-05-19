@@ -20,7 +20,7 @@
                         <strong>Автор:</strong> {{ $fileModel->author }}
                     </li>
                     <li class="list-group-item">
-                        <strong>Категория:</strong> {{ $fileModel->category }}
+                        <strong>Категория:</strong> {{ $fileModel->category->name }}
                     </li>
                     <li class="list-group-item">
                         <strong>Размер (МБ):</strong> {{ $fileModel->sizeMB }}
@@ -32,11 +32,11 @@
                 @auth
                 <div class="card-body">
                 @can("admin")
-                  <a class="btn btn-sm btn-outline-danger" href="{{ route('delete', ['filename' => $fileModel->path]) }}">
+                  <a class="btn btn-sm btn-outline-danger" href="{{ route('files.destroy', ['file' => $fileModel->path]) }}">
                     Удалить
                 </a>
                 @endcan
-                <a class="btn btn-sm btn-outline-success" href="{{ route('download', ['filename' => $fileModel->path]) }}">
+                <a class="btn btn-sm btn-outline-success" href="{{ route('files.download', ['file' => $fileModel->path]) }}">
                 Скачать
                 </a> 
                 </div>

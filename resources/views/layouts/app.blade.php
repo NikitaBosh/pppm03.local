@@ -48,7 +48,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-secondary" href="{{ route('upload') }}">
+                            <a class="btn btn-secondary" href="{{ route('files.index') }}">
                               Медиафайлы
                             </a>
                         </li>

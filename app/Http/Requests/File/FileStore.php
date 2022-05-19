@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\File;
 
 use App\Models\Task;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
-class FileRequest extends FormRequest
+class FileStore extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,7 +29,7 @@ class FileRequest extends FormRequest
             'file' => 'required|max:153600',
             'type' => 'required|between:1,255',
             'author' => 'required|between:1,255',
-            'category' => 'required|between:1,255',
+            'category_id' => 'required',
         ];
     }
 
@@ -42,8 +42,7 @@ class FileRequest extends FormRequest
             'type.between' => 'Количество символов должно быть в диапозоне от :min до :max.',
             'author.required' => 'Необходио ввести название автора',
             'author.between' => 'Количество символов должно быть в диапозоне от :min до :max.',
-            'category.required' => 'Необходимо ввести категорию',
-            'category.between' => 'Количество символов должно быть в диапозоне от :min до :max.',
+            'category_id.required' => 'Необходимо ввести категорию',
         ];
     }
 }
