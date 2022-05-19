@@ -43,6 +43,11 @@
                         @endcan
                         @endif
                         <li class="nav-item">
+                            <a class="btn btn-secondary mr-2" href="{{ route('admin.categories.index') }}">
+                              Категории
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a class="btn btn-secondary" href="{{ route('upload') }}">
                               Медиафайлы
                             </a>
