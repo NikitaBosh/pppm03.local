@@ -11,32 +11,32 @@
                 </h3>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                        <strong>Название и формат:</strong> {{ $item->name }}
+                        <strong>Название и формат:</strong> {{ $fileModel->path }}
                     </li>
                     <li class="list-group-item">
-                        <strong>Тип:</strong> {{ $item->name }}
+                        <strong>Тип:</strong> {{ $fileModel->type }}
                     </li>
                     <li class="list-group-item">
-                        <strong>Автор:</strong> {{ $item->name }}
+                        <strong>Автор:</strong> {{ $fileModel->author }}
                     </li>
                     <li class="list-group-item">
-                        <strong>Категория:</strong> {{ $item->name }}
+                        <strong>Категория:</strong> {{ $fileModel->category }}
                     </li>
                     <li class="list-group-item">
-                        <strong>Размер (МБ):</strong> {{ $item->sizeMB }}
+                        <strong>Размер (МБ):</strong> {{ $fileModel->sizeMB }}
                     </li>
                     <li class="list-group-item">
-                        <strong>Последняя модификация:</strong> {{ $item->lastModified }}
+                        <strong>Последняя модификация:</strong> {{ $fileModel->lastModified }}
                     </li>
                 </ul>
                 @auth
                 <div class="card-body">
                 @can("admin")
-                  <a class="btn btn-sm btn-outline-danger" href="{{ route('delete', ['filename' => $item->name]) }}">
+                  <a class="btn btn-sm btn-outline-danger" href="{{ route('delete', ['filename' => $fileModel->path]) }}">
                     Удалить
                 </a>
                 @endcan
-                <a class="btn btn-sm btn-outline-success" href="{{ route('download', ['filename' => $item->name]) }}">
+                <a class="btn btn-sm btn-outline-success" href="{{ route('download', ['filename' => $fileModel->path]) }}">
                 Скачать
                 </a> 
                 </div>

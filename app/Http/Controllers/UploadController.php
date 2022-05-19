@@ -16,17 +16,30 @@ class UploadController extends Controller
      *
      * @return View Представление
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search = $request->search;
         $files;
-        if(Auth::check()) {
-            $files = FileModel::all();
+        if ($search != null)
+        {
+            if(Auth::check()) {
+                $files = FileModel::search($search)->get();
+            }
+            else {
+                $files = FileModel::where('isPublic', 1)->search($search)->get();
+            } 
         }
         else {
-            $files = FileModel::where('isPublic', 1)->get();
+            if(Auth::check()) {
+                $files = FileModel::all();
+            }
+            else {
+                $files = FileModel::where('isPublic', 1)->get();
+            }
         }
 
         return view('files.index', [
+            'search' => $search,
             'files' => $files,
         ]);
     }
@@ -35,7 +48,7 @@ class UploadController extends Controller
      * Метод для загрузки фалов
      */
     public function upload(FileRequest $request)
-    {
+    {   
         if(!$request->user()->checkRole('admin'))
         {
             abort(403);
@@ -94,11 +107,8 @@ class UploadController extends Controller
         $sizeMB = round($disk->size($fileModel->path) / 1048576, 5);
         $lastModified = Carbon::createFromTimestamp($disk->lastModified($fileModel->path));
 
-        $file->toDateTimeString();
-        $item = (object)[];
-        $item->name = $fileModel->path;
-        $item->sizeMB = $sizeMB;
-        $item->lastModified = $lastModified;
-        return view('files.show', ['item' => $item]);
+        $fileModel->sizeMB = $sizeMB;
+        $fileModel->lastModified = $lastModified;
+        return view('files.show', ['fileModel' => $fileModel]);
     }
 }
