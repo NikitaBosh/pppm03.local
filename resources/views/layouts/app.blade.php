@@ -43,9 +43,11 @@
                         @endcan
                         @endif
                         <li class="nav-item">
+                            @can("admin")
                             <a class="btn btn-secondary mr-2" href="{{ route('admin.categories.index') }}">
                               Категории
                             </a>
+                            @endcan
                         </li>
                         <li class="nav-item">
                             <a class="btn btn-secondary" href="{{ route('files.index') }}">

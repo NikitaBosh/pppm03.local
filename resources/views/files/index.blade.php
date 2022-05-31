@@ -3,7 +3,9 @@
 @section('content')
 <div class="row mt-3">
   <div class="col col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+    @can('admin')
     <a class="btn btn-primary float-right mb-2" href="{{ route('files.create') }}" role="button">Добавить новый файл</a>
+    @endcan
     <form action="{{ route('files.store') }}" method="get">
       @csrf
       <div class="input-group mb-3">
@@ -31,9 +33,11 @@
               <a class="btn btn-sm btn-outline-primary mr-2" href="{{ route('files.show', ['file' => $file]) }}">
                 Просмотреть
               </a>
+              @can("admin")
               <a class="btn btn-sm btn-outline-secondary mr-2" href="{{ route('files.edit', ['file' => $file]) }}">
                 Редактировать
               </a>
+              @endcan
               @can("admin")
                 <form action="{{ route('files.destroy', ['file' => $file]) }}" method="post" class="float-end">
                 @csrf

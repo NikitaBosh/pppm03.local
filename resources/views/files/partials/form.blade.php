@@ -39,7 +39,7 @@
 </div>
  <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="isPublic" name="isPublic" @if(isset($fileModel) == true && ($fileModel->isPublic == true)) checked @endif>
-    <label class="form-check-label" for="exampleCheck1">Открый доступ</label>
+    <label class="form-check-label" for="exampleCheck1">Открытый доступ</label>
 </div>
 <button type="submit" class="btn btn-primary">Сохранить</button>
 

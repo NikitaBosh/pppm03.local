@@ -1,6 +1,6 @@
 <div class="form-group">
-  <label for="name">Название задачи</label>
-  <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $category->name ?? old('name')}}" placeholder="Введите название задачи" required>
+  <label for="name">Название категории</label>
+  <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="{{ $category->name ?? old('name')}}" placeholder="Введите название категории" required>
     @error('name')
         <div class="invalid-feedback">
             {{$message}}

@@ -20,7 +20,7 @@ class UserController extends Controller
             $user = Auth::user();
             // вывод данных
             $items = User::paginate(7);
-            return view('admin.users.index', compact('items'));
+            return view('admin.index', compact('items'));
     }
 
     /**
@@ -36,10 +36,10 @@ class UserController extends Controller
         // проверка прав пользователя
         if ($user->can('create', User::class)) {
             // вывод формы для создания пользователя
-            return view('admin.users.create');
+            return view('admin.create');
         } else {
             // запрет действия с выводом сообщения об ошибке доступа
-            return redirect()->route('admin.users.index')
+            return redirect()->route('admin.index')
                     ->withErrors(['msg' => 'Ошибка доступа']);
         }
     }
@@ -64,7 +64,7 @@ class UserController extends Controller
         // сохраняем запись
         $user->save;
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -81,9 +81,9 @@ class UserController extends Controller
         $item = User::findOrFail($id);
 
         if ($user->can('view', $item)) {
-            return view('admin.users.show', compact('item'));
+            return view('admin.show', compact('item'));
         } else {
-            return redirect()->route('admin.users.index')
+            return redirect()->route('admin.index')
                     ->withErrors(['msg' => 'Ошибка доступа']);
         }
     }
@@ -102,9 +102,9 @@ class UserController extends Controller
         $item = User::findOrFail($id);
 
         if ($user->can('update', $item)) {
-            return view('admin.users.edit', compact('item'));
+            return view('admin.edit', compact('item'));
         } else {
-            return redirect()->route('admin.users.index')
+            return redirect()->route('admin.index')
                     ->withErrors(['msg' => 'Ошибка доступа']);
         }
     }
@@ -128,7 +128,7 @@ class UserController extends Controller
         }
         $item->save();
 
-        return redirect()->route('admin.users.index');
+        return redirect()->route('admin.index');
     }
 
     /**
@@ -146,9 +146,9 @@ class UserController extends Controller
 
         if ($user->can('delete', $item)) {
             $item->delete();
-            return redirect()->route('admin.users.index');
+            return redirect()->route('admin.index');
         } else {
-            return redirect()->route('admin.users.index')
+            return redirect()->route('admin.index')
                     ->withErrors(['msg' => 'Ошибка доступа']);
         }
     }

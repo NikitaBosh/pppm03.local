@@ -21,7 +21,7 @@
                         @endforeach
                     @endif        
                     @csrf
-                        @include('admin.users.partials.form')
+                        @include('admin.partials.form')
                     </form>
                 </div>
             </div>
